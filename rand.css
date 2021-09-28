@@ -1,0 +1,38 @@
+
+*{
+    transition: 1.4s;
+}
+
+span{
+    border: 3px solid rgba(182, 0, 0, 0.178);
+    padding: 1em;
+    border-radius: 1em;
+    display: inline-block;
+    position: fixed;
+    background-color: rgba(182, 0, 0, 0.178);
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    box-shadow:
+    inset 0 0 10px 8px rgb(2, 2, 2);
+}
+
+body{
+    color: wheat;
+	 background-color: black;
+	height: 100vh;
+}
+small, a{
+    text-decoration: none;
+    border: 1px dashed white;
+    background-color: rgba(10,10,10,.75);
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 1.5em;
+    margin: .5em;
+    cursor: pointer;
+    color: white
+}
+#con{
+    display: none;
+    position: fixed;
+}

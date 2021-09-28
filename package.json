@@ -1,0 +1,12 @@
+{
+  "name": "randgames",
+  "version": "1.0.0",
+  "description": "my 1st game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pro-me0",
+  "license": "ISC"
+}
