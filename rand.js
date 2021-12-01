@@ -1,17 +1,23 @@
 let aud, c, time = 1000, t = 0, show = [], body, check, truth;
+function all(){
+    document.querySelector('.prompt').style.visibility = 'visible';
+    document.querySelector('.prompt').style.display = 'block';
+}
 let beg = () => {
     truth = true;
-    body = document.getElementById("body");
-    aud = document.getElementById("aud");
-    c = prompt("What Number Of Boxes Do You Like?");
+    beep = document.getElementById("beep");
+    cat = document.getElementById("cat");
+    c = document.querySelector('.input').value;
     if (c == null | c == undefined) {
         inn();
     };
     if (c != '') {
+    let body = document.getElementById("body");
+    body.style.visibility='visible'
         init(c);
     }else{
         alert('You must enter a number');
-        beg();
+        all()
     };
 };
 let on=0;
@@ -25,7 +31,7 @@ function init(s) {
 	
     for (let i = 0; i < s; i++) {
         let pre = document.createElement("span");
-        body.appendChild(pre);
+        document.body.appendChild(pre);
         show.push(pre);
     };
     write(0);
@@ -61,10 +67,12 @@ let pos = () => {
     };
     let play = {
 		cat: ()=>{
-			aud.src = 'catch.mp3';aud.play()
+            cat.play();
+			// return;
 		},
 		beep:() => {
-			aud.src = 'beep.mp3'; aud.play();
+            beep.play();
+			// return;
 		}
 	};
 let size = () =>{
@@ -102,11 +110,16 @@ let still = (me, e) => {
 };
 let start = function() {
     if (!truth) {
+        let body = document.getElementById("body");
+    document.getElementById('sm').innerText = 'Play Again';/* 
+    document.getElementById('sm').style.fontSize = '2vw';
+    document.getElementById('silly').style.fontSize = '2vw'; */
+    document.getElementById('silly').style.display='block';
         body.style.filter = "blur(2px)";
-        con = document.getElementById('con');
-        con.style.display = 'block';
-        con.style.left = ((.5*window.innerWidth) - (.5*con.offsetWidth)) + "px";
-        con.style.top = ((.5*window.innerHeight) - (.5*con.offsetHeight)) + "px";
+        for(let i=0; i< show.length; i++){
+            show[i].setAttribute('class', 'bl')
+        }
+    document.querySelector('.prompt').style.display = 'block';
     };
 };
 let count = function() {
@@ -118,27 +131,29 @@ let count = function() {
     };
 };
 let dull = () => {
-    document.getElementById('con').style.display = 'none';
+    let body = document.getElementById("body");
+    document.querySelector('.prompt').style.display = 'none';
     for (let i = 0; i < show.length; i++) {
-        body.removeChild(show[i]);
+        document.body.removeChild(show[i]);
     };
     ct = 0;
     show=[];
     body.style.filter = "initial";
     play.beep();
-    beg();
+    validate();
+	// return;
 };
 function inn() {
     let pre = document.createElement("span");
+    document.querySelector('.prompt').style.display = 'none';
     pre.innerText = "GOOD BYE 👋";
     pre.setAttribute('id', 'bye');
-    body.innerHTML = '';
-    body.appendChild(pre);
+    document.body.innerHTML = '';
+    document.body.appendChild(pre);
     pre.style.fontSize = '4em';
     pre.style.left = ((.5*window.innerWidth) - (.5*pre.offsetWidth)) + "px";
     pre.style.top = ((.5*window.innerHeight) - (.5*pre.offsetHeight)) + 'px';
-    document.getElementById('con').style.display = 'none';
-    play.beep();
+	// return;
 };
 
 let del = (x)=>{
@@ -156,3 +171,9 @@ let del = (x)=>{
 			// del(1)
 	// }
 // }
+
+
+validate = () => {
+    console.log(document.body.querySelector('.input').value);
+    beg();
+}
